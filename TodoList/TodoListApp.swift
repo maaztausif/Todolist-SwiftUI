@@ -11,7 +11,11 @@ import SwiftUI
 struct TodoListApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            if #available(iOS 16.0, *) {
+                RootView(viewModel: .init())
+            } else {
+                // Fallback on earlier versions
+            }
         }
     }
 }
