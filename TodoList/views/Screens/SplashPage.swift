@@ -15,7 +15,7 @@ struct SplashPage: View {
     
     var body: some View {
         ZStack{
-            Color(hex: "191a1f")
+            Background()
             VStack{
                 Spacer()
                 Image("logo")
