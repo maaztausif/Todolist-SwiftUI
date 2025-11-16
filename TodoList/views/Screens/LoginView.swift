@@ -25,7 +25,7 @@ struct LoginView: View {
                     .padding(screen.height*0.09)
                 
                 
-                CustomTextField(title: "Email", text: $viewModel.email,placeholder: "Enter    Email", leadingImage: Image(systemName: "envelope"))
+                CustomTextField(title: "Email", text: $viewModel.email,placeholder: "Enter Email", leadingImage: Image(systemName: "envelope"),isSecureInternal: false)
                     .padding(.leading,20)
                     .padding(.trailing,20)
                 
@@ -33,13 +33,13 @@ struct LoginView: View {
                     title: "Password",
                     text: $viewModel.password,
                     placeholder: "Enter password",
-                    validationMessage: "Invalid password",
                     trailingImage: Image(systemName: "envelope"),
+                    isSecureInternal: true,
                     trailingAction: {
+                        
                         // Example action: toggle secure text entry
 //                        isSecure.toggle()
-                    },
-                    isSecure: true
+                    }
                 )
                 .padding(.leading,20)
                 .padding(.trailing,20)
@@ -48,11 +48,14 @@ struct LoginView: View {
                 HStack{
                     
                 }
-                CheckBox(isChecked: .constant(true), title: "Remember me")
+                CheckBox(isChecked: $viewModel.isCheck, title: "Remember me")
                     .padding(.leading,20)
+                    .padding(.top,10)
                 PrimaryButton(title: "Login") {
                     print(viewModel.validate())
                     print("Login")
+                    print("check box = ",viewModel.isCheck)
+                    
                 }
                 .padding(10)
                 Spacer()

@@ -27,7 +27,7 @@ public class RootViewModel: ObservableObject, Identifiable {
     @Published public var paths = NavigationPath()
 
     /// The ViewModel that represents our first view in the navigation stack
-    public lazy var firstContentViewModel: LoginViewModel = {
+    public lazy var firstContentViewModel: SplashViewModel = {
         .init(navigator: self, text: "First!")
     }()
 

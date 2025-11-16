@@ -13,6 +13,7 @@ public final class LoginViewModel: ObservableObject {
     
     @Published var email:String = ""
     @Published var password:String = ""
+    @Published var isCheck:Bool = false
     
     @Published var emailError:String = ""
     @Published var passwordError:String = ""

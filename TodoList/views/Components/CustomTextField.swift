@@ -16,10 +16,9 @@ struct CustomTextField: View {
     var validationMessage:String?
     var leadingImage:Image?
     var trailingImage:Image?
+    @State var isSecureInternal: Bool = true
     var trailingAction:(()->Void)?
-    @State private var isSecureInternal: Bool = true
     
-    var isSecure: Bool = false
     
     var body: some View {
         VStack(alignment: .leading){

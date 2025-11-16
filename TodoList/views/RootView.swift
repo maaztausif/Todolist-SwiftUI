@@ -22,7 +22,7 @@ struct RootView: View {
     var body: some View {
         
         NavigationStack(path: $path) {
-            LoginView(viewModel: viewModel.firstContentViewModel)
+            SplashPage(viewModel: viewModel.firstContentViewModel)
                 .navigationDestination(for: RootViewModel.Path.self) { path in
                     switch path {
                     case .first(let viewModel):
