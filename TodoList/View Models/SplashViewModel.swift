@@ -8,40 +8,23 @@
 import Foundation
 import Combine
 
-public class SplashViewModel:ObservableObject{
-    
-    // MARK: - Properties
+public class SplashViewModel: ObservableObject {
 
     @Published public var text: String
-
     private let navigator: NavigationCoordinator
-
-    // MARK: - Lifecycle
 
     init(navigator: NavigationCoordinator, text: String) {
         self.navigator = navigator
         self.text = text
     }
 
-}
-
-// MARK: - Public
-
- extension SplashViewModel {
-
     func nextButtonSelected() {
         if #available(iOS 16.0, *) {
-            self.navigator.push(
-                RootViewModel.Path.second(
-                    LoginViewModel(navigator: navigator, text: "Second!")
-                )
-            )
-        } else {
-            // Fallback on earlier versions
+            navigator.push(RootViewModel.Path.second)
         }
     }
-
 }
+
 
 // MARK: - Hashable
 

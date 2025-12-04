@@ -10,7 +10,7 @@ import SwiftUI
 struct SplashPage: View {
     let screen = UIScreen.main.bounds
     
-    @StateObject var viewModel: SplashViewModel
+    @ObservedObject var viewModel: SplashViewModel
 
     
     var body: some View {

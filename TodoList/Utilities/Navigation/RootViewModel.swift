@@ -15,22 +15,23 @@ public class RootViewModel: ObservableObject, Identifiable {
     // MARK: - Types
 
     public enum Path: Hashable {
-        case first(SplashViewModel)
-        case second(LoginViewModel)
+        case second  // value type only
     }
 
     // MARK: - Properties
 
     public var id = UUID()
 
-    /// The object that handles our navigation stack
     @Published public var paths = NavigationPath()
 
-    /// The ViewModel that represents our first view in the navigation stack
-    public lazy var firstContentViewModel: SplashViewModel = {
+    // Create VMs normally
+    public lazy var splashVM: SplashViewModel = {
         .init(navigator: self, text: "First!")
     }()
 
+    public lazy var loginVM: LoginViewModel = {
+        .init(navigator: self, text: "Second!")
+    }()
 }
 
 // MARK: - NavigationCoordinator
@@ -49,17 +50,4 @@ extension RootViewModel: NavigationCoordinator {
             self?.paths.removeLast()
         }
     }
-
 }
-
-// MARK: - Preview Mock
-
-@available(iOS 16.0, *)
-public extension RootViewModel {
-
-    static var mock: RootViewModel {
-        .init()
-    }
-
-}
-

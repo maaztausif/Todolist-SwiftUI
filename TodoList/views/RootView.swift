@@ -12,31 +12,22 @@ import Combine
 @available(iOS 16.0, *)
 struct RootView: View {
 
-    // MARK: - Properties
+    @StateObject private var viewModel: RootViewModel
 
-    @StateObject var viewModel: RootViewModel
-    @State private var path = NavigationPath()
-
-    // MARK: - View
+    init(viewModel: RootViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
 
     var body: some View {
-        
-        NavigationStack(path: $path) {
-            SplashPage(viewModel: viewModel.firstContentViewModel)
+        NavigationStack(path: $viewModel.paths) {
+            SplashPage(viewModel: viewModel.splashVM)
                 .navigationDestination(for: RootViewModel.Path.self) { path in
                     switch path {
-                    case .first(let viewModel):
-                        SplashPage(viewModel: viewModel)
-//                    case .second(let viewModel):
-//                        SecondContentView(viewModel: viewModel)
-//                    case .third(let viewModel):
-//                        ThirdContentView(viewModel: viewModel)
-                    case .second(let viewModel):
-                        LoginView(viewModel:viewModel)
+                    case .second:
+                        LoginView(viewModel: viewModel.loginVM)
                     }
                 }
         }
-
     }
 }
-
+g

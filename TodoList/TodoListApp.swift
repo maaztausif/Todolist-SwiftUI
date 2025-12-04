@@ -12,9 +12,10 @@ struct TodoListApp: App {
     var body: some Scene {
         WindowGroup {
             if #available(iOS 16.0, *) {
-                RootView(viewModel: .init())
+                RootView(viewModel: RootViewModel())
             } else {
-                // Fallback on earlier versions
+                // Fallback for iOS < 16
+                Text("Unsupported iOS version")
             }
         }
     }
